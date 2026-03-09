@@ -1,0 +1,19 @@
+{
+  "name": "visual_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",  
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}
