@@ -12,26 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: lab7/weather-app/package-lock.json
+          cache-dependency-path: 'weather-app/package-lock.json'
           
       - name: Install dependencies
-        run: |
-          cd lab7/weather-app
-          npm ci
+        working-directory: weather-app
+        run: npm ci
           
-      - name: Build project
-        run: |
-          cd lab7/weather-app
-          npm run build
-          
-      - name: List build output (for debugging)
-        run: |
-          ls -la lab7/weather-app/dist
+      - name: Build
+        working-directory: weather-app
+        run: npm run build
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: weather-app-build
+          path: weather-app/dist
